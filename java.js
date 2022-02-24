@@ -9,7 +9,7 @@ form.addEventListener("submit", e=> {
   let warnings = ""
   parrafo.innerHTML = ""
   if(vpass != pass){
-    warnings += 'La contraseña no es valida <br>'
+    warnings += "La contraseña no es valida <br>"
     entrar = true
 
   }
