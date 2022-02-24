@@ -25,19 +25,46 @@ var t2 = Date.now();
 
 function S_Aleatorios(){
     
+
+    let RES = "La suma de " + N1 + " + " + N2 + " es: " + sum + "<br></br>";
     
-    var tiempo_final = Date.now();
-    // sacamos tiempo en que tardo en contestar
-    var timer = (tiempo_final-t)/1000;
-    // confirmamos que la respuesta sea correcta
-    if (res_suma == sum){;
-      document.write("</br><h3> Ejercicio 2 -> sumatoria de aleatorio</h3>");
-      document.write("Correcto, tardaste: " + timer + " seg en contestar");
+    if (sum == res_suma){
+        RES = RES + "Tu RES es correcta";
+        let T_final = (t2 - t1)/1000;
+        RES = RES + "<br></br>Con un T_final de: " + T_final + " segundos";
     }
     else{
-      document.write("</br><h3> Ejercicio 2 -> sumatoria de aleatorio</h3>");
-      document.write("Incorrecto, tardaste: " +  + timer + " seg en contestar");
+        RES = RES + "Tu RES es incorrecta";
+        let T_final = (t2 - t1)/1000;
+        RES = RES + "<br></br>Con un T_final de: " + T_final + " segundos";
     }
-    return null;
-  }
+    
+    return RES;
+
+}
+
+// Extraccion de numeros, emp
+const emp = [2, 5, 0, -1, 10, 0, -7, 4, 0, -10,];
+var C_Pos = 0;
+var C_Ceros = 0;
+var C_Neg = 0;
+
+function M_Arreglo(){
+
+    for(let i = 1; i <= emp.length; i++){
+        if(emp[i] == 0){
+            C_Ceros++;
+          } else if (emp[i] < 0){
+            C_Neg++;
+          }else{
+            C_Pos++;
+          }
+    }
+
+    res_ex = "Numero de 0's: " + C_Ceros + "  Numeros positivos: " + C_Pos + "  Numeros negativos: " + C_Neg;
+
+    return res_ex;
+}
+
+
   
