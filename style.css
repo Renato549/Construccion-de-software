@@ -9,7 +9,7 @@ body {font-family: 'Roboto';background: #4568DC;background: -webkit-linear-gradi
 
 h1{text-align: center;font-weight: 700;}
 
-form{background: #fff;padding: 40px 0;box-shadow: 0 0 6px 0 rgba(255, 255, 255, 0.8);border-radius: 3px;}
+form{background: #fff;padding: 40px 0;box-shadow: 0 0 6px 0 rgba(255, 255, 255, 0.8);border-radius: 3px;visibility: hidden;}
 
 .form{width: 100%;margin: auto;}
 
