@@ -1,0 +1,27 @@
+{
+  "name": "construccion-de-software",
+  "version": "1.0.0",
+  "description": "lab11",
+  "main": "lab11.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }, 
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Renato549/Construccion-de-software.git"
+  },
+  "author": "Renato Sebastian Ramirez Calva",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Renato549/Construccion-de-software/issues"
+  },
+  "homepage": "https://github.com/Renato549/Construccion-de-software#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.2",
+    "express": "^4.17.3"
+  }
+}
