@@ -32,7 +32,7 @@ const server = http.createServer( (request, response) => {
         response.write('<meta charset="utf-8">');
         response.write('<title>lab10</title>');
         response.write('</head><body>');
-        response.write('<h1 id="principal"> laboratorio 10: Rutas y formas.</h1>');
+        response.write('<h1> laboratorio 10: Rutas y formas.</h1>');
         response.write('<p>Renato Sebastian Ramirez Calva</p>')
         response.write('<br><br>');
         response.write('<p>A01275401</p>')
@@ -52,7 +52,7 @@ const server = http.createServer( (request, response) => {
         response.write('<title>Kimetsu no Yaiba</title>');
         response.write('<meta charset="utf-8">');
         response.write('</head><body>');
-        response.write('<h1 id="principal">KnY</h1>');
+        response.write('<h1>KnY</h1>');
         response.write('<h2>Ambientada en la era Taisho, la historia se centra en Tanjirō Kamado, un joven de beun corazon que pierde su familia por culpa de los demonios.</h2>');
         response.write('<br><br>');
         response.write('<p>Los mejores capitulos son:</p>');
@@ -73,7 +73,7 @@ const server = http.createServer( (request, response) => {
         response.write('<title>Altered Carbon</title>');
         response.write('<meta charset="utf-8">');
         response.write('</head><body>');
-        response.write('<h1 id="principal">AC</h1>');
+        response.write('<h1>AC</h1>');
         response.write('<h2>El único soldado que sobrevive de un grupo de guerreros que fueron derrotados en un levantamiento contra el nuevo orden mundial debe resolver un asesinato.</h2>');
         response.write('<p>Los mejores capitulos son:</p>');
         response.write('<ul>');
@@ -109,7 +109,7 @@ const server = http.createServer( (request, response) => {
             response.write('<title>Altered Carbon</title>');
             response.write('<meta charset="utf-8">');
             response.write('</head><body>');
-            response.write('<h1 id="principal">Altered Carbon</h1>');
+            response.write('<h1>Altered Carbon</h1>');
             response.write('<h2>El único soldado que sobrevive de un grupo de guerreros que fueron derrotados en un levantamiento contra el nuevo orden mundial debe resolver un asesinato.</h2>');
             response.write('<p>Los mejores capitulos son::</p>');
             response.write('<ul>');
@@ -129,7 +129,7 @@ const server = http.createServer( (request, response) => {
         response.write('<title>Mob Psycho</title>');
         response.write('<meta charset="utf-8">');
         response.write('</head><body>');
-        response.write('<h1 id="principal">MbPo</h1>');
+        response.write('<h1>MbPo</h1>');
         response.write('<h2>Es un estudiante de octavo año de secundaria apodado Mob, un psíquico con poderosas habilidades. No es bueno en expresar como se siente y desde su infancia rara vez ha sentido o mostrado alguna emoción. .</h2>');
         response.write('<p>Los mejores capitulos son::</p>');
         response.write('<ul>');
@@ -151,7 +151,7 @@ const server = http.createServer( (request, response) => {
         response.write('<meta charset="utf-8">');
         response.write('<title>Página no encontrada</title>');
         response.write('</head><body>');
-        response.write('<h1 id="principal">Pagina no encontrada.</h1>');
+        response.write('<h1>Pagina no encontrada.</h1>');
         response.write('</body>');
         response.end();
     }
