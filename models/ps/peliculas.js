@@ -19,7 +19,7 @@ module.exports = class Peliculas{
         fs.writeFileSync('./cont/peliculas.json', pelicula, 'utf8');
     }
 
-    static fetchAllPeliculas() {
+    static fetchAllPel() {
         return pel;
     }
 }

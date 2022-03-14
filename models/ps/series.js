@@ -20,7 +20,7 @@ module.exports = class Series{
         fs.writeFileSync('./cont/series.json', serie, 'utf8');
     }
 
-    static fetchAllSeries() {
+    static fetchAllSe() {
         return se;
     }  
 }
