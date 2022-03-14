@@ -1,8 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 
-const r_V = require('./routes/EntV.routes');
-const r_M = require('./routes/EntA.routes');
+const rutas_audiovisual = require('./routes/audiovisual.routes');
+const rutas_musica = require('./routes/musica.routes');
 const path = require('path');
 
 const app = express();
@@ -14,9 +14,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(bodyParser.urlencoded({extended: false}));
 
-app.use('/EntV', r_V);
-app.use('/EntA', r_M);
+app.use('/audiovisual', rutas_audiovisual);
+app.use('/musica', rutas_musica);
 
+//Middleware
 app.use((request, response, next) => {
     response.render('preg');
     next();
