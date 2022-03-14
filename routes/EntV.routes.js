@@ -50,7 +50,6 @@ router.post('/newSe', (request, response, next) => {
 
 
 router.use('/', (request, response, next) => {
-    console.log('Ruta Principal');
     response.render('Vis', {pel: pel, se:se})
 });
 
