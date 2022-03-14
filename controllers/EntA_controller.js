@@ -25,5 +25,5 @@ exports.post_newB = (request, response, next) => {
 
 
 exports.main = (request, response, next) => {
-    response.render('Mus', {artistas: cant.fetchAllCant(),bandas : band.fetchAllBands()})
+    response.render('Mus', {cantantes: cant.fetchAllCant(),bandas : band.fetchAllBands()})
 }
