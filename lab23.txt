@@ -1,0 +1,26 @@
+Procedures creados en el proyecto
+
+CREATE ALGORITHM=UNDEFINED DEFINER=root@localhost SQL SECURITY 
+DEFINER VIEW comentariosproceso  AS   (select 
+usuario_comentario_ticket.ID_ticket AS ID_ticket,
+usuario_comentario_ticket.ID_usuario AS ID_usuario,
+usuario.nombre AS nombre,usuario.apellido_paterno AS 
+apellido_paterno,usuario.apellido_materno AS apellido_materno,
+usuario_comentario_ticket.ID_comentario AS ID_comentario,
+comentario.texto_comentario AS texto_comentario,
+usuario_comentario_ticket.fecha_comentario AS fecha_comentario from 
+((usuario_comentario_ticket join usuario) join comentario) 
+where usuario_comentario_ticket.ID_comentario = comentario.ID_comentario
+ and usuario_comentario_ticket.ID_usuario = usuario.ID_usuario)  ;
+
+ DELIMITER $$
+CREATE DEFINER=root@localhost PROCEDURE AgregarComentario(IN U_textocomentario VARCHAR(500) CHARSET utf8, IN U_idusuario INT, IN U_idticket INT)
+BEGIN
+INSERT INTO comentario(texto_comentario) VALUES(U_textocomentario COLLATE utf8_spanish2_ci); 
+INSERT INTO usuario_comentario_ticket(ID_usuario, ID_comentario, ID_ticket, fecha_comentario) VALUES(U_idusuario, (SELECT MAX(ID_comentario) FROM comentario), U_idticket,CURRENT_TIMESTAMP);
+END$$
+DELIMITER ;
+
+INSERT INTO genera_ticket(ID_ticket, ID_usuario, fecha_emision) VALUES(
+(SELECT ID_ticket FROM ticket ORDER BY ID_ticket DESC LIMIT 1),
+(SELECT ID_usuario from usuario WHERE correo = (U_correo COLLATE utf8_spanish2_ci)), CURRENT_TIMESTAMP)
