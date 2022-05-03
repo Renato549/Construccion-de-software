@@ -1,6 +1,6 @@
 const path = require('path');
-const Peliculas = require('../models/audioVisual/peliculas');
-const Series = require('../models/audioVisual/series');
+const Peliculas = require('../models/peliculas');
+const Series = require('../models/series');
 
 
 
