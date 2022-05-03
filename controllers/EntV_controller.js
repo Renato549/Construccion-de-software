@@ -26,10 +26,10 @@ exports.post_newMo = (request, response, next) => {
     
 };
 
-//Para obtener las películas con su id con /audioVisual/idPelicula
+
 exports.getMo = (request, response, next) => {
 
-    Peliculas.fetchOneMo(request.params.idPelicula)
+    Peliculas.fetchOneMo(request.params.idMo)
         .then(([rows, fieldData]) => {
             console.log(rows);
             response.render('pelicula', {
