@@ -18,7 +18,7 @@ exports.login = (request, response, next) => {
     User.findOne(request.body.username)
         .then(([rows, fielData])=>{
             
-            //Si no existe el usuario, redirige a la pantalla de login
+
             if (rows.length < 1) {
                 return response.redirect('/users/login');
             }
@@ -64,7 +64,7 @@ exports.post_signup = (request, response, next) => {
 
 exports.logout = (request, response, next) => {
     request.session.destroy(() => {
-        response.redirect('/users/login'); //Este código se ejecuta cuando la sesión se elimina.
+        response.redirect('/users/login'); 
     });
 };
 

@@ -2,7 +2,7 @@ const express = require('express');
 const isAuth = require('../util/is-auth');
 const router = express.Router();
 
-const Ent_V = require('../controllers/musica_controller');
+const Ent_V = require('../controllers/EntA_controller');
 
 //Para artistas
 router.get('/new_cant',isAuth, Ent_V.get_newcant);

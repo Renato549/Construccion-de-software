@@ -15,7 +15,7 @@ exports.get_newcant = (request, response, next) => {
 };
 
 exports.post_newcant = (request, response, next) => {
-    const cantante = new Cant(request.body.nombre, request.body.sinopsis,request.body.imagen);
+    const cantante = new Cant(request.body.nombre, request.body.sinopsis,request.file.filename);
     cantante.save().then(() => {
         response.setHeader('Set-Cookie', 'ultimo_cantante_agregado=' + cantante.nombre + '; HttpOnly', 'utf8');
         response.redirect('/EntA');
@@ -36,11 +36,12 @@ exports.get_newband = (request, response, next) => {
 };
 
 exports.post_newband = (request, response, next) => {
-    const banda = new Band(request.body.nombre, request.body.sinopsis,request.body.imagen);
+    const banda = new Band(request.body.nombre, request.body.sinopsis,request.file.filename);
     banda.save().then(() => {
         response.setHeader('Set-Cookie', 'ultimo_Banda_agregada=' + banda.nombre + '; HttpOnly', 'utf8');
         response.redirect('/EntA');
-    }).catch(err => console.log(err));
+    })
+    .catch(err => console.log(err));
 };
 
 

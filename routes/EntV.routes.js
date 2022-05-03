@@ -5,13 +5,13 @@ const router = express.Router();
 
 const EntV = require('../controllers/EntV_controller');
 
-//Para películas
-router.get('/newMo', isAuth,EntV.get_newMo);
+
+router.get('/newmo', isAuth,EntV.get_newMo);
 router.post('/newMo', EntV.post_newMo);
 router.get('/:idMo', isAuth,EntV.getMo);
 
-//Para series
-router.get('/newSe', isAuth,EntV.get_newSe);
+
+router.get('/newse', isAuth,EntV.get_newSe);
 router.post('/newSe', EntV.post_newSe);
 
 

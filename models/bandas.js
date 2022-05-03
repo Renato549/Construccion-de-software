@@ -1,27 +1,27 @@
 
-const fs = require('fs');
+const db = require('../util/database');
 
-var Bands = [];
-
-
-fs.readFile('./cont/bandas.json', (err, data) => {
-    if (err) throw err;
-    Bands = JSON.parse(data); 
-});
 
 module.exports = class Bandas{
 
-    constructor(n_name) {
-        this.nombre = n_name;
+    //Constructor de la clase. Sirve para crear un nuevo objeto, y en él se definen las propiedades del modelo
+    constructor(nombre,descripcion,imagen) {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.imagen = imagen;
     }
 
+    //Este método servirá para guardar de manera persistente el nuevo objeto. 
     save() {
-        Bands.push(this);
-        let banda = JSON.stringify(Bands);
-        fs.writeFileSync('./cont/bandas.json', banda, 'utf8');
+        return db.execute('INSERT INTO bandas (nombre, descripcion,imagen) VALUES (?, ?,?)',
+        [this.nombre, this.descripcion,this.imagen]
+    );
     }
 
-    static fetchAllBands() {
-        return Bands;
+    //Este método servirá para devolver los objetos del almacenamiento persistente.
+    static fetchAllBandas() {
+       console.log(db.execute('SELECT * FROM bandas'));
+        return db.execute('SELECT * FROM bandas');
     }
+ 
 }

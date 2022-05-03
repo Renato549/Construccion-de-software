@@ -1,19 +1,25 @@
 <%- include('includes/head.ejs') %>
 
-
-    <h1>Aqui es de Bandas </h1>
-    <h2>Agrega banda:</h2>
-    <br>
-    <form action="/EntA/newBand" method="POST">
-    <label for="nombre">Nombre: </label> 
-    <input type="text" id="nombre" name="nombre" placeholder="Royal Blood">
+<body>
+    <h1 id="principal">Aqui es de bandas</h1>
+    <h3> Agrega tu banda:</h3>
     <br><br>
-    <a href="/EntA"><input type ="submit" value="Enviar"></a>
+    <form action="/EntA/newBand" method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
+        <label for="nombre">Nombre: </label> 
+        <input type="text" id="nombre" name="nombre" >
+        <br><br>
+        <label for="descripcion">descripcion: </label> <br>
+        <br><br>
+        <label for="imagen">Imagen: </label> <br>
+        <input type="file" name="imagen">
+        <br><br>
+        <a><input type ="submit" value="Enviar"></a>
     </form>
     <br><br>
-    <a href="/EntA"><button type="button">Regresar a la página</button></a>
+    <a href="/EntA"><button type="button" class="btn btn-secondary">Regresar a pagina preincipal de musica</button></a>
     </div>
     <br>
-    </body>
+</body>
 
 <%- include('includes/foot.ejs') %>
