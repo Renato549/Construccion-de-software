@@ -1,15 +1,17 @@
 const express = require('express');
+const isAuth = require('../util/is-auth');
 const router = express.Router();
 
-const visualController = require('../controllers/EntA_controller');
+const Ent_V = require('../controllers/musica_controller');
 
+//Para artistas
+router.get('/new_cant',isAuth, Ent_V.get_newcant);
+router.post('/new_Cant', Ent_V.post_newcant);
 
-router.get('/newCant', visualController.get_newC);
-router.post('/newCant', visualController.post_newB);
+//Para bandas
+router.get('/newband',isAuth, Ent_V.get_newband);
+router.post('/newBand', Ent_V.post_newband);
 
-router.get('/newBand', visualController.get_newB);
-router.post('/newBand', visualController.post_newB);
-
-router.use('/', visualController.main);
+router.use('/', isAuth,Ent_V.root);
 
 module.exports = router;

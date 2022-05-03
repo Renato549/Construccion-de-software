@@ -1,35 +1,89 @@
 const path = require('path');
-const pel = require('../models/ps/peliculas');
-const se = require('../models/ps/series');
+const Peliculas = require('../models/audioVisual/peliculas');
+const Series = require('../models/audioVisual/series');
 
-exports.get_newP = (request, response, next) => {
-    response.render('newMo');
-    username: request.session.username ? request.session.username : ''
-};
 
-exports.post_newP = (request, response, next) => {
-    let pelicula = new pel(request.body.nombre);
-    pelicula.save();
-    response.setHeader('Set-Cookie', 'lastP='+ pelicula.nombre + '; HttpOnly', 'utf8');
-    response.redirect('/EntV');
-};
 
-exports.get_newS = (request, response, next) => {
-    response.render('newSe');
-    username: request.session.username ? request.session.username : ''
-};
+exports.get_newMo = (request, response, next) => {
+    Peliculas.fetchAllMovies()
+        .then(([rows, fieldData]) => {
+            response.render('newMo', {
+                peliculas: rows,
+                username: request.session.username ? request.session.username : '',
+            })
+        })
+        .catch(err => console.log(err));
+}
+   
 
-exports.post_newS = (request, response, next) => {
-    let serie = new se(request.body.nombre);
-    serie.save();
-    response.setHeader('Set-Cookie', 'lastS=' + serie.nombre + '; HttpOnly','utf8');
-    response.redirect('/EntV');
-};
-
-exports.main = (request, response, next) => {
-    response.render('Vis', {peliculas: pel.fetchAllPel(), series:se.fetchAllSe(),
-    username: request.session.username ? request.session.username : '',
-    lastP: request.cookies.lastP ? request.cookies.lastP : '',
-    lastS: request.cookies.lastS ? request.cookies.lastS : '',
+exports.post_newMo = (request, response, next) => {    
+    const pel = new Peliculas(request.body.nombre, request.body.descripcion,request.body.imagen);
+    pel.save().then(() => {
+        response.setHeader('Set-Cookie', 'ultima_pelicula='+ pel.nombre +'; HttpOnly', 'utf8');
+        response.render('/EntV')
     })
+    .catch(err => console.log(err));
+    
+};
+
+//Para obtener las películas con su id con /audioVisual/idPelicula
+exports.getMo = (request, response, next) => {
+
+    Peliculas.fetchOneMo(request.params.idPelicula)
+        .then(([rows, fieldData]) => {
+            console.log(rows);
+            response.render('pelicula', {
+                peliculas: rows,
+                username: request.session.username ? request.session.username : '',
+                ultima_pelicula: request.cookies.ultima_pelicula ? request.cookies.ultima_pelicula : '',
+               
+            }); 
+        })
+        .catch(err => {
+            console.log(err);
+        }); 
+}
+
+exports.get_newSe = (request, response, next) => {
+    Series.fetchAllSeries()
+    .then(([rows, fieldData]) => {
+        response.render('newSe', {
+            series: rows,
+            username: request.session.username ? request.session.username : '',
+        })
+    })
+    .catch(err => console.log(err));
+}
+
+exports.post_newSe = (request, response, next) => {
+
+    const serie = new Series(request.body.nombre, request.body.descripcion,request.body.imagen);
+    serie.save().then(() => {
+        response.setHeader('Set-Cookie', 'ultima_serie='+serie.nombre+'; HttpOnly', 'utf8');
+        response.redirect('/EntV');
+    }).catch(err => console.log(err));
+};
+
+
+exports.root = (request, response, next) => {
+    Peliculas.fetchAllPeliculas()
+    .then(([peliculas, fieldData]) => {
+        Series.fetchAllSeries()
+        .then(([series,fieldData]) =>{
+            response.render('Vis', {
+                peliculas: peliculas,
+                series: series,
+                username: request.session.username ? request.session.username : '',
+                ultima_pelicula: request.cookies.ultima_pelicula ? request.cookies.ultima_pelicula : '',
+                ultima_serie: request.cookies.ultima_serie ? request.cookies.ultima_serie : '',
+                ultima_caricatura: request.cookies.ultima_caricatura ? request.cookies.ultima_caricatura : ''
+            })
+        })
+        .catch(error => {
+            console.log(error);
+        });   
+    })
+    .catch(err => console.log(err)); 
+  
+        
 }

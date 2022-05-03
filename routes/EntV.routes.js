@@ -1,14 +1,20 @@
+
 const express = require('express');
+const isAuth = require('../util/is-auth');
 const router = express.Router();
 
-const visualController = require('../controllers/EntV_controller');
+const EntV = require('../controllers/EntV_controller');
 
-router.get('/newMo', visualController.get_newP);
-router.post('/newMo', visualController.post_newS);
+//Para películas
+router.get('/newMo', isAuth,EntV.get_newMo);
+router.post('/newMo', EntV.post_newMo);
+router.get('/:idPelicula', isAuth,EntV.getMo);
 
-router.get('/newSe', visualController.get_newS);
-router.post('/newSe', visualController.post_newS);
+//Para series
+router.get('/newSe', isAuth,EntV.get_newSe);
+router.post('/newSe', EntV.post_newSe);
 
-router.use('/', visualController.main);
+
+router.use('/', isAuth,EntV.root);
 
 module.exports = router;

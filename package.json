@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
-  }, 
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Renato549/Construccion-de-software.git"
@@ -21,6 +21,7 @@
     "nodemon": "^2.0.15"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.2",
     "express": "^4.17.3"
   }

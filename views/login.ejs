@@ -3,7 +3,8 @@
     <br>
     <h2>Ingresa tus datos para ingresar</h2>
     <form action="/users/login" method="POST">
-        <label for="username">Nombre: </label>
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
+        <label for="username">Nombre de usuario: </label>
         <input type="text" id="username" name="username" placeholder="Pedro">
         <br><br>
         <label for="password">Contraseña: </label>
@@ -12,5 +13,11 @@
         <input type="submit" value="Enviar">
     </form>
     <br><br>
+
+    <h4>Registrate</h4>
+    <a href="/users/signup"><button type="button" class="btn btn-secondary">Sign up</button></a>
+    <br><br>
 </div>
+
+
 <%- include('includes/foot.ejs') %>
