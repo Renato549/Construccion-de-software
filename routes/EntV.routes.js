@@ -8,7 +8,6 @@ const EntV = require('../controllers/EntV_controller');
 
 router.get('/newmo', isAuth,EntV.get_newMo);
 router.post('/newMo', EntV.post_newMo);
-router.get('/:idMo', isAuth,EntV.getMo);
 
 
 router.get('/newse', isAuth,EntV.get_newSe);
