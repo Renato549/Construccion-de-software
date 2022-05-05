@@ -26,23 +26,7 @@ exports.post_newMo = (request, response, next) => {
     
 };
 
-//Para obtener las películas con su id con /audioVisual/idPelicula
-exports.getMo = (request, response, next) => {
 
-    Peliculas.fetchOneMo(request.params.idPelicula)
-        .then(([rows, fieldData]) => {
-            console.log(rows);
-            response.render('pelicula', {
-                peliculas: rows,
-                username: request.session.username ? request.session.username : '',
-                ultima_pelicula: request.cookies.ultima_pelicula ? request.cookies.ultima_pelicula : '',
-               
-            }); 
-        })
-        .catch(err => {
-            console.log(err);
-        }); 
-}
 
 exports.get_newSe = (request, response, next) => {
     Series.fetchAllSeries()
