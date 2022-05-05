@@ -1,7 +1,7 @@
 
 <%- include('includes/head.ejs') %>
-    <h1>Este sitio es de Tops</h1>
-    <h2>Registrate para entrar:</h2>
+    <h1>Aqui esta chido</h1>
+    
     <br>
     <form action="/users/signup" method="POST">
         <input type="hidden" name="_csrf" value="<%= csrfToken %>" >
@@ -17,7 +17,7 @@
         <input type="submit" value="Enviar">
     </form>
     <br><br>
-    <h4>¿Ya estás registrado?, ¡entra a los tops!</h4>
+    <h4>Registrate</h4>
     <a href="/users/login"><button type="button" class="btn btn-secondary">Login</button></a>
     <br><br>
     </div>
