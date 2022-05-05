@@ -9,6 +9,7 @@ const EntV = require('../controllers/EntV_controller');
 router.get('/newMo', isAuth,EntV.get_newMo);
 router.post('/newMo', EntV.post_newMo);
 
+
 //Para series
 router.get('/newSe', isAuth,EntV.get_newSe);
 router.post('/newSe', EntV.post_newSe);

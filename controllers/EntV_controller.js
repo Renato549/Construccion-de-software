@@ -1,4 +1,4 @@
-const path = require('path');
+
 const Peliculas = require('../models/peliculas');
 const Series = require('../models/series');
 
@@ -17,16 +17,14 @@ exports.get_newMo = (request, response, next) => {
    
 
 exports.post_newMo = (request, response, next) => {    
-    const pel = new Peliculas(request.body.nombre, request.body.descripcion,request.body.imagen);
+    const pel = new Peliculas(request.body.nombre, request.body.descripcion,request.file.filename);
     pel.save().then(() => {
         response.setHeader('Set-Cookie', 'ultima_pelicula='+ pel.nombre +'; HttpOnly', 'utf8');
-        response.render('/EntV')
+        response.redirect('/EntV')
     })
     .catch(err => console.log(err));
     
 };
-
-
 
 exports.get_newSe = (request, response, next) => {
     Series.fetchAllSeries()
@@ -41,7 +39,7 @@ exports.get_newSe = (request, response, next) => {
 
 exports.post_newSe = (request, response, next) => {
 
-    const serie = new Series(request.body.nombre, request.body.descripcion,request.body.imagen);
+    const serie = new Series(request.body.nombre, request.body.descripcion,request.file.filename);
     serie.save().then(() => {
         response.setHeader('Set-Cookie', 'ultima_serie='+serie.nombre+'; HttpOnly', 'utf8');
         response.redirect('/EntV');
