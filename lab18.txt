@@ -1,3 +1,7 @@
+Laboratorio desarrollado en el proyecto - https://github.com/A01610805/Proyecto_Tickets/tree/develop
+
+Util - is-auth.js: 
+
 module.exports = (request, response, next) => {
     if (!request.session.isLoggedIn) {
         return response.status(403).redirect('/users/login');
