@@ -1,0 +1,4 @@
+Laboratorio desarrollado en el proyecto - https://github.com/A01610805/Proyecto_Tickets/tree/develop
+
+CREATE TRIGGER AfterInsertTicket AFTER INSERT ON ticket FOR EACH ROW 
+INSERT into resuelve_ticket VALUES (NEW.ID_ticket, NULL, NULL, NULL, NULL)
